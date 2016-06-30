@@ -1,0 +1,56 @@
+{
+  "name": "wordpress-starter-theme",
+  "version": "1.1.0",
+  "homepage": "https://bitbucket.org/obliquestudio/wordpress-starter-theme",
+  "authors": [
+    "OBL/QUE <support@obliquestudio.co.uk>"
+  ],
+  "description": "Wordpress Starter Theme that uses gulp, bower and bootstrap",
+  "private": true,
+  "repository": [
+    {
+      "type": "git",
+      "url": "https://bitbucket.org/obliquestudio/wordpress-starter-theme.git"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    },
+    {
+      "type": "MIT",
+      "url": "https://github.com/h5bp/html5-boilerplate/blob/master/LICENSE.txt"
+    }
+  ],
+  "devDependencies": {
+    "asset-builder": "^1.1.0",
+    "browser-sync": "^2.8.2",
+    "del": "^2.2.0",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-changed": "^1.3.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.0",
+    "gulp-flatten": "0.2.0",
+    "gulp-if": "^2.0.1",
+    "gulp-imagemin": "^3.0.1",
+    "gulp-jshint": "^2.0.1",
+    "gulp-modernizr": "^1.0.0-alpha",
+    "gulp-plumber": "^1.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-rev": "^7.0.0",
+    "gulp-sass": "^2.0.1",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "imagemin-pngcrush": "^5.0.0",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.0.1",
+    "lazypipe": "^1.0.1",
+    "merge-stream": "^1.0.0",
+    "minimist": "^1.1.3",
+    "run-sequence": "^1.1.2",
+    "traverse": "^0.6.6",
+    "wiredep": "^4.0.0"
+  }
+}
