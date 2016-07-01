@@ -23,18 +23,18 @@
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # Ignored files for capistrano deploy
-#src export-ignore
-#config export-ignore
-#.jscsrc export-ignore
-#Capfile export-ignore
-#.bowerrc export-ignore
-#REVISION export-ignore
-#.jshintrc export-ignore
-#README.md export-ignore
-#.gitignore export-ignore
-#bower.json export-ignore
-#gulpfile.js export-ignore
-#package.json export-ignore
-#manifest.json export-ignore
-#.editorconfig export-ignore
-#.gitattributes export-ignore
+#REMOVE#src export-ignore
+#REMOVE#config export-ignore
+#REMOVE#.jscsrc export-ignore
+#REMOVE#Capfile export-ignore
+#REMOVE#.bowerrc export-ignore
+#REMOVE#REVISION export-ignore
+#REMOVE#.jshintrc export-ignore
+#REMOVE#README.md export-ignore
+#REMOVE#.gitignore export-ignore
+#REMOVE#bower.json export-ignore
+#REMOVE#gulpfile.js export-ignore
+#REMOVE#package.json export-ignore
+#REMOVE#manifest.json export-ignore
+#REMOVE#.editorconfig export-ignore
+#REMOVE#.gitattributes export-ignore
