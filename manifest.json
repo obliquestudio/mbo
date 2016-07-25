@@ -12,6 +12,12 @@
             ],
             "main": true
         },
+        "ie.min.css": {
+            "files": [
+                "assets/scss/ie.scss"
+            ],
+            "main": true
+        },
         "fonts": {
             "files": ["assets/fonts/**/*"]
         },

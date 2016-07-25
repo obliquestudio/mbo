@@ -10,25 +10,25 @@
 
 get_header(); ?>
 
-	<div id="main" class="site-main container-fluid">
-		<div id="content-area" class="row">
+    <div id="content-area" class="container-fluid">
+        <main id="main" class="site-main row" role="main">
 
-			<div id="content" class="site-content <?php mbo_fw_class(); ?>" role="main">
+            <div id="content" class="site-content <?php mbo_fw_class(); ?>" role="main">
 
-				<?php
-					// Start the Loop.
-					while (have_posts()) : the_post();
+            <?php
+            // Start the loop.
+            while ( have_posts() ) : the_post();
 
-						// Include the page content template.
-						get_template_part( '/partials/content', 'page' );
+                // Include the page content template.
+                get_template_part( '/partials/content', 'page' );
 
-					endwhile;
-				?>
+            // End the loop.
+            endwhile;
+            ?>
 
-			</div><!-- #content -->
+            </div><!-- #content -->
 
-		</div><!-- #content-area -->
-	</div><!-- #main -->
+        </main><!-- #main -->
+    </div><!-- #content-area -->
 
-<?php
-get_footer();
+<?php get_footer(); ?>

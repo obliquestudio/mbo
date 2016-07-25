@@ -10,6 +10,7 @@
  * @since MBO Framework 1.0.0
  */
 ?>
+
 		<footer id="colophon" class="site-footer" role="contentinfo">
 
 			<?php if ( is_active_sidebar( 'footer-widget-1' ) || is_active_sidebar( 'footer-widget-2' ) || is_active_sidebar( 'footer-widget-3' ) || is_active_sidebar( 'footer-widget-4' ) ) : ?>
@@ -46,25 +47,23 @@
 
 			<?php endif; ?>
 
-			<?php if ( has_nav_menu( 'sub_footer_navigation' ) ) : ?>
+            <div id="sub-footer" class="container-fluid">
+                <div class="footer-inner row">
 
-				<div id="sub-footer">
+                    <nav role="navigation">
+                        <?php mbo_sub_footer_nav(); ?>
+                    </nav>
 
-					<div class="footer-inner container-fluid">
+                    <span class="credit">
+                        <a href="<?php echo esc_url( 'http://www.obliquestudio.co.uk/' ); ?>" target="_blank">OBL<span class="red">/</span>QUE</a>
+                    </span>
 
-						<span class="copyright"><a href="#">MBO Framework</a> - <a href="http://www.obliquestudio.co.uk" target="_blank">Oblique Studio</a></span>
+                </div><!-- .footer-inner -->
+            </div><!-- #sub-footer -->
 
-						<nav role="navigation">
-							<?php mbo_sub_footer_nav(); ?>
-						</nav>
+        </footer><!-- .site-footer -->
 
-					</div><!-- .footer-inner -->
-				</div><!-- #sub-footer -->
-			<?php endif; ?>
-
-		</footer><!-- #colophon -->
-
-	</div><!-- #wraper -->
+	</div><!-- .site -->
 
 	<?php wp_footer(); ?>
 

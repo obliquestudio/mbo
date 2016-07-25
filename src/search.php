@@ -7,49 +7,49 @@
  * @subpackage MBO_Framework
  * @since MBO Framework 1.0.0
  */
+
 get_header(); ?>
 
-	<div id="main" class="site-main container-fluid">
-		<div id="content-area" class="row">
+    <div id="content-area" class="container-fluid">
+        <main id="main" class="site-main row" role="main">
 
-			<div id="content" class="site-content <?php mbo_content_class(); ?>" role="main">
+            <div id="content" class="site-content <?php mbo_content_class(); ?>" role="main">
 
-				<?php
-					if (have_posts()) : ?>
+            <?php if ( have_posts() ) : ?>
 
-						<header class="page-header">
-							<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'mboframework' ), get_search_query() ); ?></h1>
-						</header><!-- .page-header -->
+                <header class="page-header">
+                    <h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'mboframework' ), get_search_query() ); ?></h1>
+                </header><!-- .page-header -->
 
-					<?php
+                <?php
+                // Start the loop.
+                while ( have_posts() ) : the_post(); ?>
 
-						// Start the Loop.
-						while (have_posts()) : the_post();
+                    <?php
 
-							// Include the post format-specific template for the content.
-							get_template_part( '/partials/content', get_post_format() );
+                    // Include the serch post template for the content.
+                    get_template_part( '/partials/content', 'search' );
 
-						endwhile;
+                // End the loop.
+                endwhile;
 
-						// Previous/next page navigation.
-						// Located in /inc/template-tags.php
-						mbo_page_navi();
+                // Previous/next page navigation.
+                // Located in /inc/template-tags.php
+                mbo_page_navi();
 
-					else :
+            // If no content, include the "No posts found" template.
+            else :
 
-						// If no content, include the "No posts found" template.
-						get_template_part( '/partials/content', 'no-results' );
+                get_template_part( '/partials/content', 'none' );
 
-					endif;
-				?>
+            endif;
+            ?>
 
-			</div><!-- #content -->
+            </div><!-- #content -->
 
-			<?php get_sidebar(); ?>
+            <?php get_sidebar(); ?>
 
-		</div><!-- #content-area -->
-	</div><!-- #main -->
+        </main><!-- #main -->
+    </div><!-- #content-area -->
 
-
-<?php
-get_footer();
+<?php get_footer(); ?>

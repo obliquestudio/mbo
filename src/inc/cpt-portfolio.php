@@ -38,7 +38,7 @@ function cpt_portfolio() {
 			'show_ui'				=> true,
 			'query_var'				=> true,
 			'menu_position'			=> 8,
-			'menu_icon'				=> 'dashicons-portfolio', // use dashicons for menu icon: http://melchoyce.github.io/dashicons/
+			'menu_icon'				=> 'dashicons-portfolio', // use dashicons for menu icon: https://developer.wordpress.org/resource/dashicons/
 			'rewrite'				=> array( 'slug' => 'portfolio', 'with_front' => false ),
 			'has_archive'			=> true,
 			'capability_type'		=> 'post',

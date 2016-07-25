@@ -6,49 +6,40 @@ Template Name: Sitemap template
 
 <?php get_header(); ?>
 
-			<div id="content" class="grid_12">
+    <div id="content-area" class="container-fluid">
+        <main id="main" class="site-main row" role="main">
 
-				<div id="inner-content" class="clearfix">
+            <div id="content" class="site-content <?php mbo_fw_class(); ?>" role="main">
 
-				    <div id="main" class="clearfix" role="main">
+                <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-					    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                    <header class="entry-header">
+                        <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+                    </header><!-- .entry-header -->
 
-					    <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
+                    <div class="entry-content">
 
-					    	<header class="page-header grid_3 alpha">
-					    		<ul class="sub-menu">
-									<li>Sitemap</li>
-								</ul>
-                            </header> <!-- end article header -->
+                        <ul>
+                        <?php
+                            $exclude_array = get_the_ID();
+                            wp_list_pages(
+                                array(
+                                    'exclude' => $exclude_array,
+                                    'title_li' => '',
+                                    )
+                                );
+                        ?>
+                        </ul>
 
-						    <section class="page-content grid_9 omega">
-							   	<h1 id="pages">Pages</h1>
+                    </div><!-- .page-content -->
 
-						   		<ul>
-						   		<?php
+                    <?php edit_post_link( __( 'Edit', 'mboframework' ), '<footer class="entry-footer"><span class="edit-link">', '</span></footer><!-- .entry-footer -->' ); ?>
 
-						   		$exclude_array = get_the_ID();
+                </article><!-- #post-## -->
 
-							   		wp_list_pages(
-							   			array(
-							   				'exclude' => $exclude_array,
-							   				'title_li' => '',
-							   				)
-							   			);
-						   			?>
-						   		</ul>
+            </div><!-- #content -->
 
-						    </section> <!-- end article section -->
-
-					    </article> <!-- end article -->
-
-					    <?php endwhile; endif; ?>
-
-				    </div> <!-- end #main -->
-
-				</div> <!-- end #inner-content -->
-
-			</div> <!-- end #content -->
+        </main><!-- #main -->
+    </div><!-- #content-area -->
 
 <?php get_footer(); ?>

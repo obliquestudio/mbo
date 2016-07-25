@@ -21,9 +21,9 @@
  */
 
 /**
- * Custom Metaboxes and Fields
+ * CMB2: Custom Metaboxes and Fields
  *
- * @link https://github.com/webdevstudios/Custom-Metaboxes-and-Fields-for-WordPress/wiki/
+ * @link https://github.com/WebDevStudios/CMB2/wiki/Basic-Usage
  *
  * @author WebDevStudios (webdevstudios.com)
  * @since MBO Framework 1.0.0

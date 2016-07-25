@@ -9,30 +9,30 @@
  * @subpackage MBO_Framework
  * @since MBO Framework 1.0.0
  */
+
 get_header(); ?>
 
-    <div id="main" class="site-main container-fluid">
-        <div id="content-area" class="row">
+    <div id="content-area" class="container-fluid">
+        <main id="main" class="site-main row" role="main">
 
             <div id="content" class="site-content <?php mbo_content_class(); ?>" role="main">
 
-                <?php
+            <?php
+            // Start the loop.
+            while ( have_posts() ) : the_post();
 
-                    // Start the Loop.
-                    while (have_posts()) : the_post();
+                // Include the page content template.
+                get_template_part( '/partials/content', 'page' );
 
-                        // Include the page content template.
-                        get_template_part( '/partials/content', 'page' );
-
-                    endwhile;
-                ?>
+            // End the loop.
+            endwhile;
+            ?>
 
             </div><!-- #content -->
 
             <?php get_sidebar(); ?>
 
-        </div><!-- #content-area -->
-    </div><!-- #main -->
+        </main><!-- #main -->
+    </div><!-- #content-area -->
 
-<?php
-get_footer();
+<?php get_footer(); ?>

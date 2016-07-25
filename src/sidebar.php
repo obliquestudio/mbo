@@ -9,10 +9,12 @@
  */
 ?>
 
-<div id="sidebar" class="<?php mbo_sidebar_class(); ?>" role="complementary">
+<div id="sidebar" class="<?php mbo_sidebar_class(); ?>">
 
 	<?php if ( is_active_sidebar( 'main-sidebar' ) ) : ?>
-		<?php dynamic_sidebar( 'main-sidebar' ); ?>
+        <div id="widget-area" class="widget-area" role="complementary">
+		  <?php dynamic_sidebar( 'main-sidebar' ); ?>
+        </div><!-- .widget-area -->
 	<?php endif; ?>
 
 </div><!-- #sidebar -->

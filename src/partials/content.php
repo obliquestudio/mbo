@@ -10,44 +10,40 @@
  * @since MBO Framework 1.0.0
  */
 ?>
+
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+    <?php
+        // Post thumbnail.
+        mbo_post_thumbnail();
+    ?>
 
-	<header class="entry-header">
-		<?php
+    <header class="entry-header">
+        <?php
+            if ( is_single() ) :
+                the_title( '<h1 class="entry-title">', '</h1>' );
+            else :
+                the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
+            endif;
 
-			if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned to it.
-				echo '<div class="featured-image">';
-				the_post_thumbnail();
-				echo '</div>';
-			}
+            // Output the post meta
+            // Located in /inc/template-tags.php
+            mbo_post_meta();
 
-			if ( is_single() ) :
-				the_title( '<h1 class="entry-title">', '</h1>' );
-			else :
-				the_title( '<h1 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h1>' );
-			endif;
+            twentyfifteen_entry_meta();
 
-			// Output the post meta
-			// Located in /inc/template-tags.php
-			mbo_post_meta();
+        ?>
+    </header><!-- .entry-header -->
 
-		?>
-	</header><!-- .entry-header -->
+    <div class="entry-content">
+        <?php
+            /* translators: %s: Name of current post */
+            the_content( sprintf(
+                __( 'Continue reading %s', 'mboframework' ), // TODO
+                the_title( '<span class="screen-reader-text">', '</span>', false )
+            ) );
+        ?>
+    </div><!-- .entry-content -->
 
-	<?php if ( is_search() ) : // Only display Excerpts for Search ?>
-	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
-	<?php else : ?>
-	<div class="entry-content">
-		<?php the_content(); ?>
-	</div><!-- .entry-content -->
-	<?php endif; ?>
-
-	<?php if ( is_single() ) : // Show this only on a single post page ?>
-		<footer class="entry-footer">
-			<?php the_tags( '<span class="tags-links">' . __( 'Tags:', 'mboframework' ) . ' ', ', ', '</span>' ); ?>
-		</footer><!-- .entry-footer -->
-	<?php endif; ?>
+    <?php edit_post_link( __( 'Edit', 'mboframework' ), '<footer class="entry-footer"><span class="edit-link">', '</span></footer><!-- .entry-footer -->' ); ?>
 
 </article><!-- #post-## -->

@@ -1,308 +1,130 @@
-
-/******************************************************************
-COMMENT STYLES
-******************************************************************/
-
-/* h3 comment title */
-#comments-title {
-  /* number of comments span */
-  span {}
-
-}
-
-.comment-nav {
-
-  ul {
-
-    li {}
-
-  }
-}
-
+//
+// Comment styles
+// --------------------------------------------------
 
 .commentlist {
-  margin: 0;
-  list-style-type: none;
-}
+    .reply {
+        a {
 
-.comment {
-  position: relative;
-  clear: both;
-  overflow: hidden;
-  padding: 1.5em;
-  border-bottom: 1px solid $hr-border;
-
-  .comment-author {
-    padding: 2px 0 1px 0;
-    border: 0;
-    position: relative;
-  }
-
-  /* vcard */
-  .vcard {
-    margin-left: 50px;
-
-    cite.fn {
-      font-weight: 700;
-      font-style: normal;
-
-      a.url {}
-
-    }
-
-    time {
-      display: block;
-      font-size: 0.9em;
-      font-style: italic;
-
-      a {
-        color: $text-color;
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: underline;
         }
+    }
+    .alt {
 
-      }
+    }
+    .odd {
+
+    }
+    .even {
+
+    }
+    .thread-alt {
+
+    }
+    .thread-odd {
+
+    }
+    .thread-even {
+
+    }
+    .parent {
+
+    }
+    .comment {
+
+    }
+    .children {
+
+    }
+    .pingback {
+
+    }
+    .bypostauthor {
+
+    }
+    .comment-author {
+
+    }
+    .comment-author-admin {
 
     }
 
-    .photo {}
+    li {
+        p {
 
-    .avatar {
-      position: absolute;
-      left: -50px;
-      top: 0;
+        }
+        ul {
+            &.children {
+                li {
+                    &.alt {
+
+                    }
+                    &.odd {
+
+                    }
+                    &.even {
+
+                    }
+                    &.byuser {
+
+                    }
+                    &.comment {
+
+                    }
+                    &.depth-2 {
+
+                    }
+                    &.bypostauthor {
+
+                    }
+                    &.comment-author-admin {
+
+                    }
+                }
+            }
+        }
     }
 
-  } /* end .commentlist .vcard */
+    .vcard {
+        cite {
+            &.fn {
+                a {
+                    &.url {
 
-  &:last-child {
-    margin-bottom: 0;
-  }
+                    }
+                }
+            }
+        }
+        span {
+            &.says {
 
-  .children {
-    margin: 0;
+            }
+        }
+        img {
+            &.photo {
 
-    li {}
+            }
+            &.avatar {
 
-    /* variations */
-    .comment {}
-    .alt {}
-    .odd {}
-    .even {}
-    .depth-1 {}           /* change number for different depth */
-    .byuser {}
-    .bypostauthor {}
-    .comment-author-admin {}
+            }
+        }
+    }
 
-  } /* end children */
+    .comment-meta {
+        a {
 
+        }
+    }
+    .commentmetadata {
+        a {
 
-  &[class*=depth-] {
-    margin-top: 1.1em;
-  }
-
-  &.depth-1 {
-    margin-left: 0;
-    margin-top: 0;
-  }
-
-  &:not(.depth-1) {
-    margin-top: 0;
-    margin-left: 7px;
-    padding: 7px;
-    border-bottom: none;
-  }
-
-  &.depth-2 {}
-  &.depth-3 {}
-  &.depth-4 {}
-  &.depth-5 {}
-
-  /* general comment classes */
-  &.alt {}
-  &.odd {
-    background-color: #ffffff;
-  }
-  &.even {
-    background: #efefef;
-  }
-  &.parent {}
-  &.comment {}
-  &.children {}
-  &.pingback {}
-  &.bypostauthor {}
-  &.comment-author {}
-  &.comment-author-admin {}
-  &.thread-alt {}
-  &.thread-odd {}
-  &.thread-even {}
-}
-
-
-
-
-/* comment meta */
-.comment-meta {
-
-  a {}
+        }
+    }
 
 }
 
-.commentmetadata {
-
-  a {}
-
-}
-
-/* comment content */
-.comment_content {
-
-  p {
-    margin: 0.7335em 0 1.5em;
-    font-size: 1em;
-    line-height: 1.5em;
-  }
-
-} /* end .commentlist .comment_content */
-
-/* comment reply link */
-.comment-reply-link {
-  //@extend .blue-btn;
-  font-size: 0.9em;
-  float: right;
-
-  &:hover,
-  &:focus {
-  }
-
-} /* end .commentlist .comment-reply-link */
-
-/* edit comment link */
-.comment-edit-link {
-  font-style: italic;
-  margin: 0 7px;
-  text-decoration: none;
-  font-size: 0.9em;
-}
-
-
-
-/******************************************************************
-COMMENT FORM STYLES
-******************************************************************/
-
-.comment-respond {
-  border-top: 1px solid $hr-border;
-}
-
-#reply-title {
-  margin: 0;
-}
-
-.logged-in-as {
-  color: $text-color;
-  font-style: italic;
-  margin: 0;
-
-  a {
-    color: $text-color;
-  }
-}
-
-.comment-form-comment {
-  margin: 1.5em 0 0.75em;
-}
-
-.form-allowed-tags {
-  padding: 1.5em;
-  background-color: #efefef;
-  font-size: 0.9em;
-
-}
-
-/* comment submit button */
-#submit {
-  //@extend .blue-btn;
-  float: right;
-  font-size: 1em;
-}
-
-/* comment form title */
-#comment-form-title {
-  margin: 0 0 1.1em;
-}
-
-/* cancel comment reply link */
 #cancel-comment-reply {
-  a {}
+    a {
+
+    }
 }
 
-/* logged in comments */
-.comments-logged-in-as {}
-
-/* allowed tags */
-#allowed_tags {
-  margin: 1.5em 10px 0.7335em 0;
-}
-
-/* no comments */
-.nocomments {
-  margin: 0 20px 1.1em;
-}
-
-
-
-
-
-
-/* == WP CSS - Comment Styles == */
-
-.commentlist .reply {}
-.commentlist .reply a {}
-
-.commentlist .alt {}
-.commentlist .odd {}
-.commentlist .even {}
-.commentlist .thread-alt {}
-.commentlist .thread-odd {}
-.commentlist .thread-even {}
-.commentlist li ul.children .alt {}
-.commentlist li ul.children .odd {}
-.commentlist li ul.children .even {}
-
-.commentlist .vcard {}
-.commentlist .vcard cite.fn {}
-.commentlist .vcard span.says {}
-.commentlist .vcard img.photo {}
-.commentlist .vcard img.avatar {}
-.commentlist .vcard cite.fn a.url {}
-
-.commentlist .comment-meta {}
-.commentlist .comment-meta a {}
-.commentlist .commentmetadata {}
-.commentlist .commentmetadata a {}
-
-.commentlist .parent {}
-.commentlist .comment {}
-.commentlist .children {}
-.commentlist .pingback {}
-.commentlist .bypostauthor {}
-.commentlist .comment-author {}
-.commentlist .comment-author-admin {}
-
-.commentlist {}
-.commentlist li {}
-.commentlist li p {}
-.commentlist li ul {}
-.commentlist li ul.children li {}
-.commentlist li ul.children li.alt {}
-.commentlist li ul.children li.byuser {}
-.commentlist li ul.children li.comment {}
-.commentlist li ul.children li.depth-2 {}
-.commentlist li ul.children li.bypostauthor {}
-.commentlist li ul.children li.comment-author-admin {}
-
-#cancel-comment-reply {}
-#cancel-comment-reply a {}

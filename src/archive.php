@@ -15,98 +15,52 @@
  * @subpackage MBO_Framework
  * @since MBO Framework 1.0.0
 */
+
 get_header(); ?>
 
-	<div id="main" class="site-main container-fluid">
-		<div id="content-area" class="row">
+    <div id="content-area" class="container-fluid">
+        <main id="main" class="site-main row" role="main">
 
-			<div id="content" class="site-content <?php mbo_content_class(); ?>" role="main">
+            <div id="content" class="site-content <?php mbo_content_class(); ?>" role="main">
 
-				<?php if (have_posts()) : ?>
+            <?php if ( have_posts() ) : ?>
 
-					<header class="page-header">
-						<h1 class="page-title">
-							<?php
-								if ( is_category() ) :
-									single_cat_title();
+                <header class="page-header">
+                    <?php
+                        the_archive_title( '<h1 class="page-title">', '</h1>' );
+                        the_archive_description( '<div class="taxonomy-description">', '</div>' );
+                    ?>
+                </header><!-- .page-header -->
 
-								elseif ( is_tag() ) :
-									single_tag_title();
 
-								elseif ( is_author() ) :
-									printf( __( 'Author: %s', 'mboframework' ), '<span class="vcard">' . get_the_author() . '</span>' );
 
-								elseif ( is_day() ) :
-									printf( __( 'Day: %s', 'mboframework' ), '<span>' . get_the_date() . '</span>' );
+            <?php
+            // Start the loop.
+            while ( have_posts() ) : the_post();
 
-								elseif ( is_month() ) :
-									printf( __( 'Month: %s', 'mboframework' ), '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'mboframework' ) ) . '</span>' );
+                // Include the page content template.
+                get_template_part( '/partials/content', 'page' );
 
-								elseif ( is_year() ) :
-									printf( __( 'Year: %s', 'mboframework' ), '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'mboframework' ) ) . '</span>' );
+            // End the loop.
+            endwhile;
 
-								elseif ( is_tax( 'post_format', 'post-format-aside' ) ) :
-									_e( 'Asides', 'mboframework' );
+                // Previous/next page navigation.
+                // Located in /inc/template-tags.php
+                mbo_page_navi();
 
-								elseif ( is_tax( 'post_format', 'post-format-gallery' ) ) :
-									_e( 'Galleries', 'mboframework');
+            else :
 
-								elseif ( is_tax( 'post_format', 'post-format-image' ) ) :
-									_e( 'Images', 'mboframework');
+                // If no content, include the "No posts found" template.
+                get_template_part( '/partials/content', 'none' );
 
-								elseif ( is_tax( 'post_format', 'post-format-video' ) ) :
-									_e( 'Videos', 'mboframework' );
+            endif;
+            ?>
 
-								elseif ( is_tax( 'post_format', 'post-format-quote' ) ) :
-									_e( 'Quotes', 'mboframework' );
+            </div><!-- #content -->
 
-								elseif ( is_tax( 'post_format', 'post-format-link' ) ) :
-									_e( 'Links', 'mboframework' );
+            <?php get_sidebar(); ?>
 
-								elseif ( is_tax( 'post_format', 'post-format-status' ) ) :
-									_e( 'Statuses', 'mboframework' );
+        </main><!-- #main -->
+    </div><!-- #content-area -->
 
-								elseif ( is_tax( 'post_format', 'post-format-audio' ) ) :
-									_e( 'Audios', 'mboframework' );
-
-								elseif ( is_tax( 'post_format', 'post-format-chat' ) ) :
-									_e( 'Chats', 'mboframework' );
-
-								else :
-									_e( 'Archives', 'mboframework' );
-
-								endif;
-							?>
-						</h1>
-					</header><!-- .page-header -->
-
-					<?php
-
-						// Start the Loop.
-						while (have_posts()) : the_post();
-
-							// Include the post format-specific template for the content.
-							get_template_part( '/partials/content', get_post_format() );
-
-						endwhile;
-
-						// Previous/next page navigation.
-						mbo_page_navi();
-
-					else :
-
-						// If no content, include the "No posts found" template.
-						get_template_part( '/partials/content', 'no-results' );
-
-					endif;
-				?>
-
-			</div><!-- #content -->
-
-			<?php get_sidebar(); ?>
-
-		</div><!-- #content-area -->
-	</div><!-- #main -->
-
-<?php
-get_footer();
+<?php get_footer(); ?>

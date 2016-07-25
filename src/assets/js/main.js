@@ -1,90 +1,98 @@
-/**
- * Main scripts file
- *
- * This file should contain any js scripts you want to add to the site.
- * Instead of calling it in the header or throwing it inside wp_head()
- * this file will be called automatically in the footer so as not to
- * slow the page load.
- *
- * @author O B L / Q U E
- * @package WordPress
- * @subpackage MBO_Framework
- * @since MBO Framework 1.0.0
- */
-
-
-/**
+/* ========================================================================
  * DOM-based Routing
+ * Based on http://goo.gl/EUTi53 by Paul Irish
  *
- * Fire javascript based on body class (working off strictly WordPress body_class)
- * or put javascript in  common for executing on all pages.
+ * Only fires on body classes that match. If a body class contains a dash,
+ * replace the dash with an underscore when adding it to the object below.
  *
- * Several of the WordPress body classes include hyphens in the name, for these
- * cases replace the hyphen in the name with an underscore and this script will
- * handle the rest
+ * .noConflict()
+ * The routing is enclosed within an anonymous function so that you can
+ * always reference jQuery with $, even when in .noConflict() mode.
  *
- * @link http://paulirish.com/2009/markup-based-unobtrusive-comprehensive-dom-ready-execution/
- *
- * @author Paul Irish (paulirish.com)
- * @since MBO Framework 1.0.0
- */
+ * Google CDN, Latest jQuery
+ * To use the default WordPress version of jQuery, go to lib/config.php and
+ * remove or comment out: add_theme_support('jquery-cdn');
+ * ======================================================================== */
+
 (function($) {
 
-    var frameworkNS = {
-
+    // Use this variable to set up the common and page specific functions. If you
+    // rename this variable, you will also need to rename the namespace below.
+    var MBO = {
         // All pages
         'common': {
-            init: function () {
+            init: function() {
+
+                // Sample Modernizr checks
+                // ========================
+
+                // Touch events
+                if (!Modernizr.touchevents) {
+                    console.log('No touch events');
+                }
+
+                // Media queries
+                var mediaQuery = Modernizr.mq('(min-width: 900px)');
+                if (mediaQuery) {
+                    console.log('The browser window is larger than 900px');
+                }
 
             },
             finalise: function() {
 
-              // JavaScript to be fired on all pages, after page specific JS is fired
-              
             }
         },
-
         // Home page
         'home': {
-            init: function () {
+            init: function() {
 
-                // JS here
+            },
+            finalise: function() {
 
             }
         },
+        // About us page, note the change from about-us to about_us.
+        'about_us': {
+            init: function() {
 
-        // Blog
-        'blog': {
-            init: function () {
-
-                // JS here
+            },
+            finalise: function() {
 
             }
         }
-
     };
 
-    // You can ignore this part, this is used to check and fire the above based on the body class
+    // The routing fires all common scripts, followed by the page specific scripts.
+    // Add additional events for more control over timing e.g. a finalise event
     var UTIL = {
-        fire: function (func, funcname, args) {
-            var namespace = frameworkNS;
+        fire: function(func, funcname, args) {
+            var fire;
+            var namespace = MBO;
             funcname = (funcname === undefined) ? 'init' : funcname;
-            if (func !== '' && namespace[func] && typeof namespace[func][funcname] === 'function') {
+            fire = func !== '';
+            fire = fire && namespace[func];
+            fire = fire && typeof namespace[func][funcname] === 'function';
+
+            if (fire) {
                 namespace[func][funcname](args);
             }
         },
-        loadEvents: function () {
-
+        loadEvents: function() {
+            // Fire common init JS
             UTIL.fire('common');
 
-            $.each(document.body.className.replace(/-/g, '_').split(/\s+/), function (i, classnm) {
+            // Fire page-specific init JS, and then finalise JS
+            $.each(document.body.className.replace(/-/g, '_').split(/\s+/), function(i, classnm) {
                 UTIL.fire(classnm);
+                UTIL.fire(classnm, 'finalise');
             });
 
+            // Fire common finalise JS
             UTIL.fire('common', 'finalise');
         }
     };
 
+    // Load Events
     $(document).ready(UTIL.loadEvents);
 
-})(jQuery);
+})(jQuery); // Fully reference jQuery after this point.

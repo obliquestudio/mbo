@@ -1,6 +1,9 @@
 <?php
 /**
  * Sidebars & widgets
+ * Usage: <?php dynamic_sidebar( $index ); ?>
+ *
+ * @link http://codex.wordpress.org/Function_Reference/register_sidebar
  *
  * @author O B L / Q U E
  * @package WordPress
@@ -8,19 +11,12 @@
  * @since MBO Framework 1.0.0
  */
 
-/**
- * Register sidebars
- * Usage: <?php dynamic_sidebar( $index ); ?>
- * See: http://www.paulund.co.uk/how-to-register-a-sidebar-in-wordpress
- *
- * @since MBO Framework 1.0.0
- * @return void
- */
 function mbo_widgets_init() {
 
 	register_sidebar(array(
 		'name' => __( 'Main sidebar', 'mboframework' ),
 		'id'            => 'main-sidebar',
+        'class'         => '',
 		'description' => __( 'The main sidebar.', 'mboframework' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s clearfix">',
 		'after_widget' => '</div>',
@@ -31,6 +27,7 @@ function mbo_widgets_init() {
 	register_sidebar(array(
 		'name' => __( 'Footer widget area 1', 'mboframework' ),
 		'id'            => 'footer-widget-1',
+        'class'         => '',
 		'description' => __( 'The first footer widget area.', 'mboframework' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s clearfix">',
 		'after_widget' => '</div>',
@@ -41,6 +38,7 @@ function mbo_widgets_init() {
 	register_sidebar(array(
 		'name' => __( 'Footer widget area 2', 'mboframework' ),
 		'id'            => 'footer-widget-2',
+        'class'         => '',
 		'description' => __( 'The second footer widget area.', 'mboframework' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s clearfix">',
 		'after_widget' => '</div>',
@@ -51,6 +49,7 @@ function mbo_widgets_init() {
 	register_sidebar(array(
 		'name' => __( 'Footer widget area 3', 'mboframework' ),
 		'id'            => 'footer-widget-3',
+        'class'         => '',
 		'description' => __( 'The third footer widget area.', 'mboframework' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s clearfix">',
 		'after_widget' => '</div>',
@@ -61,6 +60,7 @@ function mbo_widgets_init() {
 	register_sidebar(array(
 		'name' => __( 'Footer widget area 4', 'mboframework' ),
 		'id'            => 'footer-widget-4',
+        'class'         => '',
 		'description' => __( 'The fourth footer widget area.', 'mboframework' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s clearfix">',
 		'after_widget' => '</div>',

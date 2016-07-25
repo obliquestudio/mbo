@@ -29,10 +29,10 @@ function mbo_scripts_and_styles() {
 		/*
 		 * Main stylesheet
 		 */
-		wp_register_style( 'mbo-main-stylesheet', get_stylesheet_directory_uri() . '/assets/css/main.css', array(), null, 'all' );
+		wp_register_style( 'mbo-main-stylesheet', get_stylesheet_directory_uri() . '/assets/css/main.min.css', array(), null, 'all' );
 
 		// IE-only style sheet
-		wp_register_style( 'mbo-ie-only', get_stylesheet_directory_uri() . '/assets/css/ie.css', array(), null, 'all' );
+		wp_register_style( 'mbo-ie-only', get_stylesheet_directory_uri() . '/assets/css/ie.min.css', array(), null, 'all' );
 
 
 		/*
@@ -40,24 +40,30 @@ function mbo_scripts_and_styles() {
 		 * See http://codex.wordpress.org/Function_Reference/wp_register_script
 		 * ========================================================================== */
 
+        // Modernizr
+        wp_register_script( 'mbo-custom-modernizr', get_stylesheet_directory_uri() . '/assets/js/modernizr.min.js', array(), null, true );
+
+        /*
+         * Grab Google CDN's latest jQuery fallback to local if offline
+         * Leave in the header to avoid conflicts with plugins.
+         * https://www.obstance.com/articles/web-software/wordpress/using-googles-cdn-to-load-jquery-with-a-local-fallback-on-your-wordpress-powered-site-r16/
+         */
+        wp_deregister_script( 'jquery' );
+
+        // Check to make sure Google's library is available
+        $link = 'http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js';
+        $try_url = @fopen($link,'r');
+        if( $try_url !== false ) {
+            // If it's available, get it registered
+            wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js');
+        } else {
+            // Register the local file if CDN fails
+            wp_register_script('jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), '1.12.4', true);
+        }
+
 		// Main JS
-		wp_register_script( 'mbo-main-scripts', get_stylesheet_directory_uri() . '/assets/js/main.js', array(), null, true );
+		wp_register_script( 'mbo-main-scripts', get_stylesheet_directory_uri() . '/assets/js/main.min.js', array(), null, true );
 
-		/*
-		 * Grab Google CDN's latest jQuery fallback to local if offline
-		 * Leave in the header to avoid conflicts with plugins.
-		 */
-		wp_deregister_script('jquery');
-
-		wp_register_script(
-		  'jquery',
-		  'http://code.jquery.com/jquery-latest.min.js',
-		  [],
-		  null,
-		  true
-		);
-
-		add_filter( 'script_loader_src', 'mbo_jquery_fallback', 10, 2 );
 
 		/*
 		 * Enqueue stylesheets
@@ -80,6 +86,7 @@ function mbo_scripts_and_styles() {
 		 * See http://codex.wordpress.org/Function_Reference/wp_enqueue_script
 		 * ========================================================================== */
 
+        wp_enqueue_script( 'mbo-custom-modernizr' );
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'mbo-main-scripts' );
 
@@ -87,7 +94,6 @@ function mbo_scripts_and_styles() {
 		if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
 			wp_enqueue_script( 'comment-reply' );
 		}
-
 
 		/*
 		 * Localize the main Javascript file so that we can make the following WordPress
@@ -107,23 +113,3 @@ function mbo_scripts_and_styles() {
 
 }
 add_action( 'wp_enqueue_scripts', 'mbo_scripts_and_styles', 999 );
-
-/**
- * Output the local fallback immediately after jQuery's <script>
- *
- * @link http://wordpress.stackexchange.com/a/12450
- */
-function mbo_jquery_fallback($src, $handle = null) {
-  static $add_jquery_fallback = false;
-
-  if ($add_jquery_fallback) {
-    echo '<script>window.jQuery || document.write(\'<script src="' . $add_jquery_fallback .'"><\/script>\')</script>' . "\n";
-    $add_jquery_fallback = false;
-  }
-
-  if ($handle === 'jquery') {
-    $add_jquery_fallback = apply_filters('script_loader_src', \includes_url('/assets/js/jquery/jquery.js'), 'jquery-fallback');
-  }
-
-  return $src;
-}
