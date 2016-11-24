@@ -17,62 +17,59 @@
  * @author O B L / Q U E
  * @package WordPress
  * @subpackage MBO_Framework
- * @since MBO Framework 1.0.0
  */
 
+
+// Define stylesheet directory
+define( 'SS_DIR', trailingslashit( get_stylesheet_directory() ) );
+
 /**
- * CMB2: Custom Metaboxes and Fields
+ * Page builder plugin, incliudes CMB2
  *
- * @link https://github.com/WebDevStudios/CMB2/wiki/Basic-Usage
+ * @link https://github.com/WebDevStudios/WDS-Simple-Page-Builder
  *
  * @author WebDevStudios (webdevstudios.com)
- * @since MBO Framework 1.0.0
  */
-if ( file_exists( dirname( __FILE__ ) . '/inc/meta-boxes/metaboxes-config.php' ) ) {
-    require_once( dirname( __FILE__ ) . '/inc/meta-boxes/metaboxes-config.php' );
+if ( file_exists( SS_DIR . 'inc/page-builder/wds-simple-page-builder.php' ) ) {
+
+    // Page builder
+    require_once( 'inc/page-builder/wds-simple-page-builder.php' );
+    require_once( 'inc/config-page-builder.php' );
+    require_once( 'inc/config-page-builder-fields.php' );
+
+    // Meta boxes
+    require_once( 'inc/config-metaboxes.php' );
+
+    // Theme options
+    require_once( 'inc/config-theme-options.php' );
 }
 
 
 /**
- * The Redux Options Framework Plugin
+ * Page ordering plugin
  *
- * @link http://docs.reduxframework.com/
+ * Order your pages, hierarchical custom post types, or custom post types with
+ * “page-attributes” with simple drag and drop right from the built in page list.
  *
- * @author Team Redux (reduxframework.com)
- * @since MBO Framework 1.0.0
+ * @link https://10up.com/plugins/simple-page-ordering-wordpress/
+ *
+ * @author 10up
  */
-
-// Define options framework url
-define( 'REDUX_URL', trailingslashit( get_stylesheet_directory()  . '/inc/admin' ) );
-
-// Include options framework if present
-if ( !class_exists( 'ReduxFramework' ) && file_exists( REDUX_URL . 'ReduxCore/framework.php' ) ) {
-    require_once REDUX_URL . 'ReduxCore/framework.php';
-    require_once REDUX_URL . 'options-config.php';
+if ( file_exists( SS_DIR . 'inc/simple-page-ordering/simple-page-ordering.php' ) ) {
+    require_once( 'inc/simple-page-ordering/simple-page-ordering.php' );
 }
 
 
-require_once('inc/config.php');					// Theme setup and configuration
-require_once('inc/cleanup.php');				// Cleanup
-require_once('inc/scripts-styles.php');			// Scripts and stylesheets
-require_once('inc/sidebars-widgets.php');		// Sidebars and widgets
-require_once('inc/nav-bootstrap-walker.php');	// Bootstrap walker class
-require_once('inc/nav.php');					// Register custom menus
-require_once('inc/cpt-portfolio.php');			// Portfolio custom post type
-require_once('inc/comments.php');				// Custom comments
-require_once('inc/template-tags.php');			// Various other functions
-require_once('inc/activation.php');				// Theme activation
-require_once('inc/shortcodes.php');				// Shortcodes
-require_once('inc/filter-columns.php');			// Filter custom post type columns
-require_once('inc/custom.php');					// Custom functions
-
-
-// Used after filter-columns.php include
-// new Tax_CTP_Filter(
-// 	array(
-
-// 		// 'Custom Post Type Name' => array(
-// 		// 	'Custom Taxonomy Name',
-// 		// 	),
-// 		)
-// 	);
+require_once('inc/cleanup.php');                // Cleanup
+require_once('inc/config.php');                 // Theme setup and configuration
+require_once('inc/cpt-project.php');            // Project custom post type
+require_once('inc/cpt-team-member.php');        // Team member custom post type
+require_once('inc/cpt-testimonial.php');        // Testimonial custom post type
+require_once('inc/custom.php');                 // Custom functions
+require_once('inc/nav-bootstrap-walker.php');   // Bootstrap walker class
+require_once('inc/nav.php');                    // Register custom menus
+require_once('inc/scripts-styles.php');         // Scripts and stylesheets
+require_once('inc/shortcodes.php');             // Shortcodes
+require_once('inc/sidebars-widgets.php');       // Sidebars and widgets
+require_once('inc/template-tags.php');          // Functions used for templating
+require_once('inc/utilities.php');              // Utilities

@@ -1,20 +1,14 @@
 {
     "dependencies": {
-        "main.js": {
+        "main.min.js": {
             "files": [
                 "assets/js/main.js"
             ],
             "main": true
         },
-        "main.css": {
+        "main.min.css": {
             "files": [
                 "assets/scss/main.scss"
-            ],
-            "main": true
-        },
-        "ie.min.css": {
-            "files": [
-                "assets/scss/ie.scss"
             ],
             "main": true
         },
@@ -24,12 +18,12 @@
         "images": {
             "files": ["assets/img/**/*"]
         },
-        "modernizr.js": {
+        "modernizr.min.js": {
             "vendor": [
                 "vendor/modernizr/modernizr.js"
             ]
         },
-        "jquery.js": {
+        "jquery.min.js": {
             "bower": ["jquery"]
         }
     },
@@ -38,7 +32,6 @@
         "dist": "../theme_dist/"
     },
     "config": {
-        "devUrl": "mbo.wordpress-framework.dev",
-        "themeName": "Wordpress Framework"
+        "devUrl": "mbo.wordpress-framework.dev"
     }
 }

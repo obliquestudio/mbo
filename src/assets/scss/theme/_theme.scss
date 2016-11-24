@@ -8,12 +8,12 @@
 // -------------------------
 
 body {
-  -webkit-font-smoothing: anitaliased;
+    -webkit-font-smoothing: antialiased;
 }
 
 // Cap container width
 .container-fluid {
-  max-width: $container-lg;
+    max-width: $container-lg;
 }
 
 // Responsive images
@@ -57,7 +57,9 @@ strong, b, .strong {
 
 // Footer styles
 // -------------------------
-
+#colophon {
+    background-color: $gray-lighter;
+}
 
 //
 // Pages

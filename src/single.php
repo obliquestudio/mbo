@@ -5,7 +5,6 @@
  * @author O B L / Q U E
  * @package WordPress
  * @subpackage MBO_Framework
- * @since MBO Framework 1.0.0
  */
 
 get_header(); ?>
@@ -19,17 +18,10 @@ get_header(); ?>
             // Start the Loop.
             while ( have_posts() ) : the_post();
 
-                // Include the post format-specific template for the content.
-                get_template_part( '/partials/content', get_post_format() );
-
-                // If comments are open or we have at least one comment, load up the comment template.
-                if ( comments_open() || get_comments_number() ) :
-                    comments_template();
-                endif;
-
-                // Previous/next post navigation.
-                // Located in /inc/template-tags.php
-                mbo_post_navi();
+                /*
+                 * Include the template for the post content.
+                 */
+                get_template_part( '/template-parts/content', 'post' );
 
             // End the loop.
             endwhile;

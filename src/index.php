@@ -11,7 +11,6 @@
  * @author O B L / Q U E
  * @package WordPress
  * @subpackage MBO_Framework
- * @since MBO Framework 1.0.0
  */
 
 get_header(); ?>
@@ -21,28 +20,47 @@ get_header(); ?>
 
             <div id="content" class="site-content <?php mbo_content_class(); ?>" role="main">
 
-            <?php
-            if (have_posts()) :
+            <?php if (have_posts()) : ?>
 
-                // Start the Loop.
-                while (have_posts()) : the_post();
+                <header class="page-header">
+                    <?php
+                        $page_for_posts_id = get_option( 'page_for_posts' );
+                        echo '<h1 class="page-title">' . get_the_title($page_for_posts_id) . '</h1>';
+                    ?>
+                </header><!-- .page-header -->
 
-                    // Include the post format-specific template for the content.
-                    get_template_part( '/partials/content', get_post_format() );
+                <div class="page-content">
+                    <?php
+                    // Start the loop.
+                    while ( have_posts() ) : the_post(); ?>
 
-                endwhile;
+                        <?php
 
-                // Previous/next page navigation.
-                // Located in /inc/template-tags.php
-                mbo_page_navi();
+                        /*
+                         * Include the template for the post thumb content.
+                         */
+                        get_template_part( 'template-parts/content', 'post-thumb' );
 
-            else :
+                    // End the loop.
+                    endwhile; ?>
+
+                </div><!-- .page-content -->
+
+                <footer class="page-footer">
+                <?php
+                    /*
+                     * Posts pagination
+                     */
+                    mbo_posts_pagination();
+                ?>
+                </footer><!-- .page-footer -->
+
+            <?php else :
 
                 // If no content, include the "No posts found" template.
-                get_template_part( '/partials/content', 'none' );
+                get_template_part( 'template-parts/content', 'none' );
 
-            endif;
-            ?>
+            endif; ?>
 
             </div><!-- #content -->
 

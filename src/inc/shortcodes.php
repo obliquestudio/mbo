@@ -7,7 +7,6 @@
  * @author O B L / Q U E
  * @package WordPress
  * @subpackage MBO_Framework
- * @since MBO Framework 1.0.0
  */
 
 // Enable shortcodes in widgets

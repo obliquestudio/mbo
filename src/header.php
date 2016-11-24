@@ -7,7 +7,6 @@
  * @author O B L / Q U E
  * @package WordPress
  * @subpackage MBO_Framework
- * @since MBO Framework 1.0.0
  */
 ?>
 <!DOCTYPE html>
@@ -34,14 +33,12 @@
     <meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/assets/img/mstile-144x144.png">
 
     <!-- IE 11 Tile for Windows 8.1 Start Screen -->
-    <meta name="application-name" content="Application Name">
-    <meta name="msapplication-tooltip" content="Application Tooltip">
+    <meta name="application-name" content="<?php bloginfo('name'); ?>">
+    <meta name="msapplication-tooltip" content="<?php bloginfo('description'); ?>">
     <meta name="msapplication-square70x70logo" content="<?php echo get_template_directory_uri(); ?>/assets/img/mstile-70x70.png">
     <meta name="msapplication-square150x150logo" content="<?php echo get_template_directory_uri(); ?>/assets/img/mstile-150x150.png">
     <meta name="msapplication-wide310x150logo" content="<?php echo get_template_directory_uri(); ?>/assets/img/mstile-310x150.png">
     <meta name="msapplication-square310x310logo" content="<?php echo get_template_directory_uri(); ?>/assets/img/mstile-310x310.png">
-
-    <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
     <?php // Wordpress head functions ?>
     <?php wp_head(); ?>
@@ -50,27 +47,24 @@
 
 </head>
 <body <?php body_class(); ?>>
-	<div id="page" class="hfeed site">
+    <div id="page" class="hfeed site">
 
-		<header id="masthead" class="site-header" role="banner">
+        <header id="masthead" class="site-header" role="banner">
 
-			<nav class="navbar navbar-default" role="navigation">
-				<div class="container-fluid">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
 
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-container">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="<?php echo home_url(); ?>" rel="home"><?php bloginfo('name'); ?></a>
-					</div>
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-container">
+                            <span>Toggle navigation</span>
+                        </button>
+                        <a class="navbar-brand" href="<?php echo home_url(); ?>" rel="home"><?php bloginfo('name'); ?></a>
+                    </div>
 
-					<?php mbo_primary_nav(); ?>
+                    <?php mbo_primary_nav(); ?>
 
-				</div><!-- .container-fluid -->
-			</nav><!-- .navbar -->
+                </div><!-- .container-fluid -->
+            </nav><!-- .navbar -->
 
-		</header><!-- .site-header -->
+        </header><!-- .site-header -->

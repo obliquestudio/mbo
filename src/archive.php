@@ -13,7 +13,6 @@
  * @author O B L / Q U E
  * @package WordPress
  * @subpackage MBO_Framework
- * @since MBO Framework 1.0.0
 */
 
 get_header(); ?>
@@ -28,33 +27,40 @@ get_header(); ?>
                 <header class="page-header">
                     <?php
                         the_archive_title( '<h1 class="page-title">', '</h1>' );
-                        the_archive_description( '<div class="taxonomy-description">', '</div>' );
+                        the_archive_description();
                     ?>
                 </header><!-- .page-header -->
 
+                <div class="page-content">
+                    <?php
+                    // Start the loop.
+                    while ( have_posts() ) : the_post(); ?>
 
+                        <?php
 
-            <?php
-            // Start the loop.
-            while ( have_posts() ) : the_post();
+                        // Include the serch post template for the content.
+                        get_template_part( 'template-parts/content', 'post-thumb' );
 
-                // Include the page content template.
-                get_template_part( '/partials/content', 'page' );
+                    // End the loop.
+                    endwhile; ?>
 
-            // End the loop.
-            endwhile;
+                </div><!-- .page-content -->
 
-                // Previous/next page navigation.
-                // Located in /inc/template-tags.php
-                mbo_page_navi();
+                <footer class="page-footer">
+                <?php
+                    /*
+                     * Posts pagination
+                     */
+                    mbo_posts_pagination();
+                ?>
+                </footer><!-- .page-footer -->
 
-            else :
+            <?php else :
 
                 // If no content, include the "No posts found" template.
-                get_template_part( '/partials/content', 'none' );
+                get_template_part( 'template-parts/content', 'none' );
 
-            endif;
-            ?>
+            endif; ?>
 
             </div><!-- #content -->
 

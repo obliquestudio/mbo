@@ -6,26 +6,26 @@
 // Image alignment classes
 // -------------------------
 .alignleft, .alignright, .aligncenter, .alignnone {
-  max-width: 100%;
+    max-width: 100%;
 }
 
 .aligncenter, img.aligncenter {
-  margin-right: auto;
-  margin-left: auto;
-  display: block;
-  clear: both;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    clear: both;
 }
 
 .size-thumbnail {
     &.alignleft {
-      float: left;
-      margin-right: 12px;
-      display: inline;
+        float: left;
+        margin-right: 12px;
+        display: inline;
     }
     &.alignright {
-      float: right;
-      margin-left: 12px;
-      display: inline;
+        float: right;
+        margin-left: 12px;
+        display: inline;
     }
 }
 
@@ -40,14 +40,14 @@
     .size-medium {
         width: auto;
         &.alignleft {
-          float: left;
-          margin-right: 12px;
-          display: inline;
+            float: left;
+            margin-right: 12px;
+            display: inline;
         }
         &.alignright {
-          float: right;
-          margin-left: 12px;
-          display: inline;
+            float: right;
+            margin-left: 12px;
+            display: inline;
         }
     }
 

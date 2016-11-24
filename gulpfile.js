@@ -1,6 +1,5 @@
 // ## Globals
 var argv         = require('minimist')(process.argv.slice(2));
-var autoprefixer = require('gulp-autoprefixer');
 var browserSync  = require('browser-sync').create();
 var changed      = require('gulp-changed');
 var concat       = require('gulp-concat');
@@ -96,15 +95,6 @@ var cssTasks = function(filename) {
             }));
         })
         .pipe(concat, filename)
-        .pipe(autoprefixer, {
-            browsers: [
-                'last 2 versions',
-                'ie 8',
-                'ie 9',
-                'android 4',
-                'opera 12'
-          ]
-        })
         .pipe(cssNano, {
             safe: true
         })
@@ -266,7 +256,7 @@ gulp.task('files', function() {
 // `gulp jshint` - Lints configuration JSON and project JS.
 gulp.task('jshint', function() {
     return gulp.src([
-        'bower.json', 'gulpfile.js'
+        'gulpfile.js'
     ].concat(project.js))
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'))
@@ -275,7 +265,7 @@ gulp.task('jshint', function() {
 
 // ### Clean
 // `gulp clean` - Deletes the build folder entirely.
-gulp.task('clean', require('del').bind(null, [path.dist, 'vendor'], {force: true}));
+gulp.task('clean', require('del').bind(null, [path.dist, 'vendor'], { force: true }));
 
 // ### Watch
 // `gulp watch` - Use BrowserSync to proxy your dev server and synchronize code
@@ -286,7 +276,8 @@ gulp.task('clean', require('del').bind(null, [path.dist, 'vendor'], {force: true
 gulp.task('watch', function() {
     browserSync.init({
         files: ['{lib,templates}/**/*.php', '*.php'],
-        proxy: config.devUrl
+        proxy: config.devUrl,
+        notify: false
     });
     gulp.watch([path.source + 'assets/scss/**/*'], ['styles']);
     gulp.watch([path.source + 'assets/js/**/*'], ['modernizr', 'jshint', 'scripts']);

@@ -1,18 +1,21 @@
 {
     // Enforcing options
     // http://www.jshint.com/docs/options/#enforcing-options
+    // https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/
 
-    "bitwise": true,
+    "boss": true,
     "curly": true,
     "eqeqeq": true,
-    "forin": true,
-    "latedef": true,
+    "es3": true,
+    "expr": true,
+    "immed": true,
     "noarg": true,
     "nonbsp": true,
-    "nonew": true,
+    "onevar": true,
+    "quotmark": "single",
+    "trailing": true,
     "undef": true,
     "unused": true,
-    "strict": false,
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

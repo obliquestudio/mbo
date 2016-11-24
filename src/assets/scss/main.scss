@@ -42,27 +42,36 @@
 @import "../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_responsive-utilities.scss";
 // endbower
 
+// Theme
+@import "theme/mixins";
 @import "theme/theme";
-@import "theme/commenting";
-@import "theme/widgets";
 @import "theme/wordpress";
+
+// UI
+@import "ui/bootstrap-overrides";
+@import "ui/flexslider";
+@import "ui/gravity-forms";
+
+// Browser fixes
+@import "theme/browser-fixes";
+
 
 // Extra small screen / phone
 @media only screen and (min-width: $screen-xs-min) {
-  @import "theme/screen-xs";
+    @import "theme/screen-xs";
 }
 
 // Small screen / tablet
 @media only screen and (min-width: $screen-sm-min) {
-  @import "theme/screen-sm";
+    @import "theme/screen-sm";
 }
 
 // Medium screen / desktop
 @media only screen and (min-width: $screen-md-min) {
-  @import "theme/screen-md";
+    @import "theme/screen-md";
 }
 
 // Large screen / wide desktop
 @media only screen and (min-width: $screen-lg-min) {
-  @import "theme/screen-lg";
+    @import "theme/screen-lg";
 }

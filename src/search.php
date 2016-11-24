@@ -5,7 +5,6 @@
  * @author O B L / Q U E
  * @package WordPress
  * @subpackage MBO_Framework
- * @since MBO Framework 1.0.0
  */
 
 get_header(); ?>
@@ -21,29 +20,38 @@ get_header(); ?>
                     <h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'mboframework' ), get_search_query() ); ?></h1>
                 </header><!-- .page-header -->
 
-                <?php
-                // Start the loop.
-                while ( have_posts() ) : the_post(); ?>
-
+                <div class="page-content">
                     <?php
+                    // Start the loop.
+                    while ( have_posts() ) : the_post(); ?>
 
-                    // Include the serch post template for the content.
-                    get_template_part( '/partials/content', 'search' );
+                        <?php
 
-                // End the loop.
-                endwhile;
+                        /*
+                         * Include the template for the post thumb content.
+                         */
+                        get_template_part( 'template-parts/content', 'post-thumb' );
 
-                // Previous/next page navigation.
-                // Located in /inc/template-tags.php
-                mbo_page_navi();
+                    // End the loop.
+                    endwhile; ?>
 
-            // If no content, include the "No posts found" template.
-            else :
+                </div><!-- .page-content -->
 
-                get_template_part( '/partials/content', 'none' );
+                <footer class="page-footer">
+                <?php
+                    /*
+                     * Posts pagination
+                     */
+                    mbo_posts_pagination();
+                ?>
+                </footer><!-- .page-footer -->
 
-            endif;
-            ?>
+            <?php else :
+
+                // If no content, include the "No posts found" template.
+                get_template_part( 'template-parts/content', 'none' );
+
+            endif; ?>
 
             </div><!-- #content -->
 

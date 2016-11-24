@@ -1,0 +1,11 @@
+//
+// Custom mixins
+// --------------------------------------------------
+
+@mixin transform($property) {
+	-webkit-transform: $property;
+	-moz-transform: $property;
+	-ms-transform: $property; // IE9 only
+	-o-transform: $property;
+	transform: $property;
+}

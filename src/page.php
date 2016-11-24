@@ -1,13 +1,14 @@
 <?php
 /**
- * Page template file
+ * The template for displaying pages
  *
- * The template that displays all pages by default.
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages and that
+ * other "pages" on your WordPress site will use a different template.
  *
  * @author O B L / Q U E
  * @package WordPress
  * @subpackage MBO_Framework
- * @since MBO Framework 1.0.0
  */
 
 get_header(); ?>
@@ -21,8 +22,10 @@ get_header(); ?>
             // Start the loop.
             while ( have_posts() ) : the_post();
 
-                // Include the page content template.
-                get_template_part( '/partials/content', 'page' );
+                /*
+                 * Include the template for the page content.
+                 */
+                get_template_part( 'template-parts/content', 'page' );
 
             // End the loop.
             endwhile;
